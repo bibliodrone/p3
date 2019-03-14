@@ -11,6 +11,5 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'ConvertController@index');
+Route::get('/convert/{[system, units]}', 'ConvertController@calculate');

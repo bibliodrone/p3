@@ -12,4 +12,8 @@
 */
 
 Route::get('/', 'ConvertController@index');
-Route::get('/convert/{[system, units]}', 'ConvertController@calculate');
+Route::get('/convert/{input1}', 'ConvertController@calculate');
+
+## Example routes from the discussion of P3 development (Week 6, Part 8 video)
+//Route::get('/', 'TriviaController@index');
+//Route::get('/check-answer', 'TriviaController@checkAnswer');

@@ -11,8 +11,8 @@ class ConvertController extends Controller
         return 'Show Converter page';
     }
     
-    public function calculate($input[]) 
+    public function calculate($input1) 
     {
-        return 'Conversion calculation: ' //. $result; 
+        return view('calculate.calculate')->with(['input1' => $input1]); //. $result; 
     }
 }

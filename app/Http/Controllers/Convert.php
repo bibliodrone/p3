@@ -64,7 +64,7 @@ class Converter {
                 $returnValue = $valueToConvert * 2.205;
             }
         }
-        /* Assemble unit conversion output message and return to logic.php for display to user on index.php */
+    
         if($valueToConvert != "0") {
             $valueToConvert = ltrim($valueToConvert, 0);
             }

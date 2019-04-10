@@ -25,16 +25,16 @@
             <label for = "unitType">Unit Type</label>
             <ul>
                 <li>
-                    <input type="radio" name="unitType" value="distance" {{ (isset($unitType) && $unitType=="distance") ? "checked" : "" }}>Distance (mi. and km.)
+                    <input type="radio" name="unitType" value="distance" {{ (old("unitType") == "distance") ? "checked" : "" }}>Distance (mi. and km.)</input>
 
                 </li>
-                <li>
-                    <input type="radio" name="unitType" value="temperature"{{ (isset($temperature) && $unitType=="temperature") ? "checked" : "" }} >Temperature (&#176;F and &#176;C)
+                <li> 
+                    <input type="radio" name="unitType" value="temperature" {{ (old("unitType") == "temperature") ? "checked" : "" }}>Temperature (&#176;F and &#176;C)</input>
                   
                     <span class="infoNote"> *Note: The mininum valid temperature (absolute zero) is -459.67&#176; F or -273.15&#176; C</span>
                 </li>
                 <li>
-                    <input type="radio" name="unitType" value="mass">Mass (lbs. and kg.)
+                    <input type="radio" name="unitType" value="mass" {{ (old("unitType") == "mass") ? "checked" : "" }}>Mass (lbs. and kg.)</input>
                 </li>
             </ul>
               @include('includes.error-fields', ["field" => "unitType"])
@@ -42,8 +42,8 @@
             <ul>
                 <li>
                     <select name="system">
-                        <option value="tometric" {{ (isset ($system) && $system  == "tometric") ? "selected" : "" }}>Imperial to Metric</option>
-                        <option value="toimperial" {{ (isset ($system) && $system ==  "toimperial") ? "selected" : "" }}>Metric to Imperial</option>
+                        <option value="tometric" {{ (old("system")=="tometric") ? "selected" : ""}} >Imperial to Metric   </option>
+                        <option value="toimperial" {{ (old("system")=="toimperial") ? "selected" : "" }}>Metric to Imperial  </option>
                     </select>
                 </li>
             </ul>
@@ -51,14 +51,20 @@
             <br>
             <label for = 'valueToConvert'>Enter value</label><span class="infoNote"> *Must be numeric</span>
             <ul>
-                <li><input type="text" name="valueToConvert" value="{{ (old("valueToConvert", "")) }}"></li>
+                <li><input type="text" name="valueToConvert" value ='{{ old("valueToConvert") }}'></li>
             </ul>
              @include('includes.error-fields', ["field" => "valueToConvert"])
             <input type="submit" class="btn btn-primary" id="submitButton" value="Convert!">
         </fieldset>
         
-        @include('includes.returnMessage', ["message"])
-        
+        <div class="output">
+            @if(isset($returnMessage))
+            <p>{{ $returnMessage }}</p>
+            @endif
+            
+            <input type="text" name="returnMessage">{{ old("returnMessage") }} </input>
+        </div>
+
 
         @if(count($errors) > 0)
         <div class="alert alert-danger">

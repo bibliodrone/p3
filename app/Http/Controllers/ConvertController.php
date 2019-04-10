@@ -36,13 +36,13 @@ class ConvertController extends Controller
         $request -> validate([
             "unitType" => "required",
             "valueToConvert" => "required|numeric",
-            "system" => "required"
+            "system" => "required",
+            "returnMessage" => "present"
             ]);
         
-            $unitType = $request->input("unitType");
-            $valueToConvert = $request->input("valueToConvert");
-            $system = $request ->input("system");
-        
+        $unitType = $request->input("unitType");
+        $valueToConvert = $request->input("valueToConvert");
+        $system = $request ->input("system");
         
         $returnValue = "None";
         $returnMessage = "None";
@@ -115,12 +115,12 @@ class ConvertController extends Controller
             //$returnMessage = $valueToConvert.$unitA." = ".$returnValue.$unitB;
         //}
 
-           return redirect('/showResults')->with([
-                'unitType' => $request,
+          return redirect('/showResults')->with(['returnMessage' => $returnMessage], withInput());/*([
+                'unitType' => $unitType,
                 'sys' => $system,
                 'valueToConvert' =>  $valueToConvert,
                 'returnMessage' => $returnMessage
-            ]);
+            ]);*/
         //}
         //}
     }

@@ -1,49 +1,14 @@
 <?php
+namespace GW;
 
-namespace App\Http\Controllers;
-// 'use' imports functions into this namespace.
-use Illuminate\Http\Request;
-
-class ConvertController extends Controller
-{
-    public function index()
-    {
-        return view('layouts.master'); //. $result; 
-    }
-
-    public function showForm()
-    {
-       return view('convert.convert');
-    }
+class Converter {
+    /* Function convert handles unit conversions chosen by user
+    @param $system -- 'tometric' or 'toimperial'
+    @param $unitType -- 'distance' or 'temperature' or 'mass'
+    @param $valueToConvert -- Numerical value entered by user
+    */
     
-    public function showResults(Request $request)
-    {
-        $unitType = $request->session()->get('unitType', '');
-        $system = $request->session()->get('system', '');
-        $valueToConvert = $request->session()->get('valueToConvert','');
-        $returnMessage = $request->session()->get('returnMessage', '');
-        
-        return view('convert.convert')->with([
-                'unitType' => $unitType,
-                'system' => $system,
-                'valueToConvert' => $valueToConvert,
-                'returnMessage' => $returnMessage,
-            ]);
-    }
-    
-    public function convertUnits(Request $request)
-    {
-        $request -> validate([
-            "unitType" => "required",
-            "valueToConvert" => "required|numeric",
-            "system" => "required"
-            ]);
-        
-            $unitType = $request->input("unitType");
-            $valueToConvert = $request->input("valueToConvert");
-            $system = $request ->input("system");
-        
-        
+    public function convert($system, $unitType, $valueToConvert) {
         $returnValue = "None";
         $returnMessage = "None";
         $mi = " Miles ";
@@ -103,26 +68,7 @@ class ConvertController extends Controller
         if($valueToConvert != "0") {
             $valueToConvert = ltrim($valueToConvert, 0);
             }
-        
         $returnMessage = $valueToConvert.$unitA." = ".$returnValue.$unitB;
-        
-        /*dump($returnMessage);
-        dump($request->all());
-*/
-        //if(isset($unitType) and isset($valueToConvert) and isset($system)) {
-            // return redirect('/')->withInput();
-            //$returnMessage = convert($system, $unitType, $valueToConvert);
-            //$returnMessage = $valueToConvert.$unitA." = ".$returnValue.$unitB;
-        //}
-
-           return redirect('/showResults')->with([
-                'unitType' => $request,
-                'sys' => $system,
-                'valueToConvert' =>  $valueToConvert,
-                'returnMessage' => $returnMessage
-            ]);
-        //}
-        //}
+        return ($returnMessage);
     }
 }
-    

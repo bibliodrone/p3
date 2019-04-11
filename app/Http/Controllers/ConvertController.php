@@ -1,16 +1,13 @@
 <?php
-
 namespace App\Http\Controllers;
 // 'use' imports functions into this namespace.
 use Illuminate\Http\Request;
-
 class ConvertController extends Controller
 {
     public function index()
     {
         return view('layouts.master'); //. $result; 
     }
-
     public function showForm()
     {
        return view('convert.convert');
@@ -37,7 +34,6 @@ class ConvertController extends Controller
             "unitType" => "required",
             "valueToConvert" => "required|numeric",
             "system" => "required",
-            "returnMessage" => "present"
             ]);
         
         $unitType = $request->input("unitType");
@@ -114,8 +110,8 @@ class ConvertController extends Controller
             //$returnMessage = convert($system, $unitType, $valueToConvert);
             //$returnMessage = $valueToConvert.$unitA." = ".$returnValue.$unitB;
         //}
-
-          return redirect('/showResults')->with(['returnMessage' => $returnMessage], withInput());/*([
+          return redirect('/showResults')->with(['returnMessage' => $returnMessage])->withInput();/*([
+          return redirect('/showResults')->with(['returnMessage' => $returnMessage])->withInput();
                 'unitType' => $unitType,
                 'sys' => $system,
                 'valueToConvert' =>  $valueToConvert,
@@ -125,4 +121,3 @@ class ConvertController extends Controller
         //}
     }
 }
-    

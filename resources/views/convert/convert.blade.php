@@ -55,14 +55,17 @@
                @include('includes.error-field', ['fieldName' =>  'valueToConvert'])
             <input type="submit" class="btn btn-primary" id="submitButton" value="Convert!">
         </fieldset>
-        
-        <div class="output">
+                @include('includes.return-message')
+
+<!-- Moved message- and error-display into error-field include view, but want to save this code for future reference. -->        
+
+<!--<div class="output">
             @if(isset($returnMessage))
             <p>{!! $returnMessage !!}</p>
             @endif
-        </div>
+        </div>-->
         
-<!-- Moved error display into error-field include view, but want to save this code for future reference. -->
+
         <!--@if(count($errors) > 0)
         <div class="alert alert-danger">
             <ul>

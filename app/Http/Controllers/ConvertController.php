@@ -25,7 +25,7 @@ class ConvertController extends Controller
                 'system' => $system,
                 'valueToConvert' => $valueToConvert,
                 'returnMessage' => $returnMessage,
-            ]);
+        ]);
     }
     
     public function convertUnits(Request $request)
@@ -34,7 +34,7 @@ class ConvertController extends Controller
             "unitType" => "required",
             "valueToConvert" => "required|numeric",
             "system" => "required",
-            ]);
+        ]);
         
         $unitType = $request->input("unitType");
         $valueToConvert = $request->input("valueToConvert");
@@ -95,29 +95,13 @@ class ConvertController extends Controller
                 $returnValue = $valueToConvert * 2.205;
             }
         }
-        /* Assemble unit conversion output message and return to logic.php for display to user on index.php */
+        
         if($valueToConvert != "0") {
             $valueToConvert = ltrim($valueToConvert, 0);
-            }
+        }
         
         $returnMessage = $valueToConvert.$unitA." = ".$returnValue.$unitB;
         
-        /*dump($returnMessage);
-        dump($request->all());
-*/
-        //if(isset($unitType) and isset($valueToConvert) and isset($system)) {
-            // return redirect('/')->withInput();
-            //$returnMessage = convert($system, $unitType, $valueToConvert);
-            //$returnMessage = $valueToConvert.$unitA." = ".$returnValue.$unitB;
-        //}
-          return redirect('/showResults')->with(['returnMessage' => $returnMessage])->withInput();/*([
-          return redirect('/showResults')->with(['returnMessage' => $returnMessage])->withInput();
-                'unitType' => $unitType,
-                'sys' => $system,
-                'valueToConvert' =>  $valueToConvert,
-                'returnMessage' => $returnMessage
-            ]);*/
-        //}
-        //}
+        return redirect('/showResults')->with(['returnMessage' => $returnMessage])->withInput();
     }
 }

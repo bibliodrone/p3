@@ -6,16 +6,8 @@ h2 {
     
     max-width: 800px;
 }
-.error {
-    color: #721c24;
-}
 
 .alert-danger {
-   /* position: absolute;
-    top: 50vh;
-    left: 20vw;
-    text-align: center;
-    margin: auto;*/
     padding: 10px;
     padding-right: 40px;
     max-width: 400px;

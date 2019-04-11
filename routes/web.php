@@ -10,6 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'convertController@showForm');
+Route::get('/', 'ConvertController@showForm');
 Route::get('/convert_units', 'ConvertController@convertUnits');
 Route::get('/showResults', 'ConvertController@showResults');

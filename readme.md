@@ -15,6 +15,7 @@ I briefly consulted Stack Overflow on includes--
 
 ## Packages
 I included and made use of *barryvdh/laravel-debugbar*
-Did not end up using any other packages.
+
+I Did not end up using any other packages.
 
 

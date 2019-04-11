@@ -13,13 +13,3 @@
 Route::get('/', 'convertController@showForm');
 Route::get('/convert_units', 'ConvertController@convertUnits');
 Route::get('/showResults', 'ConvertController@showResults');
-//Route::view('/result', 'convertController@showResult')
-
-//Route::get('/calculate/', 'ConvertController@calculate');
-
-
-//Route::get('/{unitType, system, valueToConvert}', 'ConvertController@calculate');
-
-## Example routes from the discussion of P3 development (Week 6, Part 8 video)
-//Route::get('/', 'TriviaController@index');
-//Route::get('/check-answer', 'TriviaController@checkAnswer');

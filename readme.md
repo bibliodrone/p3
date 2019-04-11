@@ -1,6 +1,7 @@
 # Project 3
 + By: *Gerald Walden*
 + Production URL: <http://p3.geraldbrentwalden.me>
++ Repo: <https://github.com/bibliodrone/p3>
 
 ## Outside resources
 I looked a few times at pages under *https://www.w3schools.com/php/* for quick answers to basic syntax questions.

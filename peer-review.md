@@ -25,18 +25,18 @@ I tried leaving fields blank, and entering invalid form data. The Odometer field
 
 Most 'user error' cases have the expected error messages about required fields, and entering non-number data into the "Fuel reading from gas pump" field yields the expected error message about the input format.
 
-I did find one loop-hole: I got a Server 500 error by leaving the 'last-fill-up' field blank and entering a number into the 'this fill-up' field and hitting 'Calculate'.
+I did find one loop-hole: I got a *Server 500 error* by leaving the 'last-fill-up' field blank and entering a number into the 'this fill-up' field and hitting 'Calculate'.
 
 Also, as I've noticed with my own project as well, text fields which accept number input seem to allow scientific notation (e.g. 10e19). By setting the odometers to reflect a trip of 11km and entering 10e19 liters for the fuel-pump reading, I was able to get a fuel consumption of 0 kilometers/liter (which makes sense if the fuel consumption readout is limited to only a few decimal points.). One way to deal with this is of course to limit the maximum allowable number one can input (Judging from the Fuel log, the maximum trip distance for purposes of calculation appears to be 999,999,999 units). 
 
 ## 3. Code: Routes
-The Routes in web.php look good to me, with no extraneous code. The routes have logical names and are commented as toe their specific function as well. 
+The Routes in _web.php_ look good to me, with no extraneous code. The routes have logical names and are commented as toe their specific function as well. 
 
 ## 4. Code: Views
-Views look good; proper use of Blade syntax and statements as far as I can tell; nav-bar is defined in master.blade which makes sense as it is persistent across all pages; template inheritance is used to display the unique content of the other pages (form, log, about, contact).
+Views look good; proper use of Blade syntax and statements as far as I can tell; nav-bar is defined in _master.blade_ which makes sense as it is persistent across all pages; template inheritance is used to display the unique content of the other pages (form, log, about, contact).
 
 ## 5. Code: General
-The code in the Controllers and Routes looks good to me. The FuelConsumptionController.php seems to follow the style conventions regarding layout, indentation, variable names. Code has comments explaining the logic of each section. 
+The code in the Controllers and Routes looks good to me. _FuelConsumptionController.php_ seems to follow the style conventions regarding layout, indentation, variable names. Code has comments explaining the logic of each section. 
 
 It was interesting to see the use of JSON to store and retrieve data, along with the use of a Cookie to allow a returning user to see their past mileage data in the log. From a coding perspective, I would consider these to be relatively more advanced functions to implement (I find JSON to be tricky to use at times, anyway). This was a good workaround given the lack of a true database to use for this project. 
 
